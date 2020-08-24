@@ -1,0 +1,23 @@
+{
+  "name": "qiankun-app",
+  "version": "1.0.2",
+  "description": "乾坤微前端框架 -- 子包基础模版",
+  "main": "index.js",
+  "bin": {
+    "create-qiankun-app": "./bin/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JinZhenZon/micro-front.git"
+  },
+  "keywords": [
+    "乾坤",
+    "微前端"
+  ],
+  "author": "jinzz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JinZhenZon/micro-front/issues"
+  },
+  "homepage": "https://github.com/JinZhenZon/micro-front#readme"
+}
