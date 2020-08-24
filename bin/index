@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+const program = require('commander');
+const package = require('../package.json');
+const config = require('../tools/config.json')
+const log = require('../tools/log');
+const download = require('../tools/download');
+const fs = require('../tools/fsapi');
+const path = require("path");
+const readlineSync = require('readline-sync');
+
+program
+  .version(package.version, '-v, --version')
+  .usage('<command> [项目名称]')
+  .parse(process.argv)
+
+
+const pathName = program.args[0];
+// 判断文件名字
+if (program.args.length != 1) {
+  log.error("请输入一个文件名字")
+  return
+}
+// 判断文件是否存在
+if (fs.exists(path.resolve(pathName))) {
+  // TODO: 提供自动删除
+  log.error("当前该文件夹已经存在，请删除");
+  return
+}
+
+log.clear();
+console.info('----------------------------')
+for (key in config) {
+  const name = config[key]
+  log.success('(' + key + ') ' + name)
+}
+console.info('----------------------------')
+
+const configValue = readlineSync.question('请选择你的配置');
+console.warn(configValue)
+download(pathName).then(() => {
+  console.success('下载成功')
+})
